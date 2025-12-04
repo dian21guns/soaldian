@@ -1,18 +1,94 @@
 <!DOCTYPE html>
-<html>
-<head><title>Login Guru</title></head>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Guru</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      width: 350px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .login-card img {
+      width: 90px;
+      margin-bottom: 15px;
+    }
+
+    .login-card h2 {
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #00c6ff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #7df9ff;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
 <body>
-  <h2>Login Guru</h2>
-  <input type="password" id="pass" placeholder="Masukkan password">
-  <button onclick="login()">Masuk</button>
+  <div class="login-card">
+    <img src="logo_sekolah.png" alt="Logo Sekolah" />
+    <h2>Login Guru</h2>
+    <input type="password" id="pass" placeholder="Masukkan Password" />
+    <button onclick="login()">MASUK</button>
+    <div class="footer">© 2025 CBT SMKN 1 PANGGARANGAN</div>
+  </div>
 
   <script>
     function login() {
-      const pw = document.getElementById("pass").value;
-      if (pw === "passwordRahasia") {
+      const pw = document.getElementById('pass').value;
+      if (pw === "PASSWORD_GURU") {
         window.location.href = "banksoal.html";
       } else {
-        alert("Password salah!");
+        alert("Password salah! Hubungi Admin.");
       }
     }
   </script>
