@@ -1,1 +1,12 @@
-
+[
+  {
+    "pertanyaan": "Ibu kota Indonesia adalah?",
+    "pilihan": ["Jakarta", "Bandung", "Surabaya", "Medan"],
+    "jawaban": "Jakarta"
+  },
+  {
+    "pertanyaan": "2 + 2 = ?",
+    "pilihan": ["3", "4", "5", "6"],
+    "jawaban": "4"
+  }
+]
