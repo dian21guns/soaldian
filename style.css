@@ -73,3 +73,17 @@ header {
   border: none;
   cursor: pointer;
 }
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.school-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
