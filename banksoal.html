@@ -1,13 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Bank Soal</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #1e3c72; /* disamakan dengan warna login */
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      padding: 20px 40px;
+      color: white;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.12);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      text-align: center;
+      backdrop-filter: blur(12px);
+      color: white;
+    }
+
+    .upload-box {
+      border: 2px dashed #7df9ff;
+      padding: 40px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+    }
+
+    .upload-box:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .upload-box img {
+      width: 80px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .btn {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background: #00c6ff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #7df9ff;
+    }
+
+    pre {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f7f9ff;
+      border-radius: 10px;
+      text-align: left;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
 <body>
 
-<h2>Bank Soal</h2>
+  <div class="header">
+  <img src="logo.png" alt="Logo Sekolah" style="width:80px; margin-bottom:10px;">
+  <div>Upload Bank Soal</div>
+</div>
 
-<!-- Tempelkan di sini -->
-<h3>Upload Excel Soal</h3>
-<input type="file" id="excelInput" accept=".xlsx">
-<button onclick="uploadExcel()">Konversi ke JSON</button>
-<pre id="output"></pre>
-<!-- Sampai di sini -->
+  <div class="container">
+    <label class="upload-box" for="excelInput">
+      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991130.png" />
+      <h3>Klik untuk Mengunggah File Excel</h3>
+      <p>Format wajib: .xlsx</p>
+    </label>
+
+    <input type="file" id="excelInput" accept=".xlsx">
+
+    <button class="btn" onclick="uploadExcel()">Konversi ke JSON</button>
+
+    <pre id="output">Menunggu file...</pre>
+  </div>
+
+<script>
+  function uploadExcel() {
+    const fileInput = document.getElementById("excelInput");
+    if (fileInput.files.length === 0) {
+      alert("Silakan pilih file Excel terlebih dahulu.");
+      return;
+    }
+    document.getElementById("output").textContent = "Sedang memproses...";
+  }
+</script>
 
 </body>
-
+</html>
