@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASESMEN AKHIS SEMESTER GANJIL SMKN 1 PANGGARANGAN TAHUN 2025</title>
+  <title>CBT Sekolah</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,7 +21,30 @@
       <h4>Pilih Mata Pelajaran</h4>
       <select id="pilihMapel">
         <option value="">-- Pilih --</option>
-        <option value="bahasa_indonesia">Bahasa Inggris</option>
-        <option value="mapel_piihan">Mapel Pilihan</option>
+        <option value="bahasa_inggris">Bahasa Inggris</option>
+        <option value="matematika">Matematika</option>
         <option value="ipa">IPA</option>
-        <option value="pkn"
+        <option value="pkn">PKN</option>
+        <option value="sejarah">Sejarah</option>
+      </select>
+      <button id="mulaiBtn">Mulai Ujian</button>
+    </div>
+
+    <!-- Area soal -->
+    <div class="main">
+      <div id="soalBox"></div>
+    </div>
+
+    <!-- Panel kanan: nomor soal -->
+    <div class="side-right">
+      <h4>Nomor Soal</h4>
+      <div id="nomorSoal"></div>
+      <button id="selesaiBtn" style="display:none;">Selesaikan Ujian</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
