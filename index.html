@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Soal</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Sekolah</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h2>Aplikasi Soal Ulangan</h2>
-    <div id="quiz"></div>
-    <button id="nextBtn">Soal Berikutnya</button>
-    <div id="hasil"></div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+  <header>
+    <h3>CBT SEKOLAH</h3>
+    <div id="timer">00:00</div>
+  </header>
 
+  <div class="container">
+
+    <!-- Panel kiri -->
+    <div class="side-left">
+      <h4>Pilih Mata Pelajaran</h4>
+      <select id="pilihMapel">
+        <option value="">-- Pilih --</option>
+        <option value="bahasa_indonesia">Bahasa Indonesia</option>
+        <option value="matematika">Matematika</option>
+        <option value="ipa">IPA</option>
+        <option value="pkn"
