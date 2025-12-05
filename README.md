@@ -5,7 +5,7 @@ Cocok digunakan untuk latihan siswa, ulangan harian, maupun evaluasi sederhana.
 
 ## 🔗 Demo / Link Aplikasi
 Klik untuk membuka aplikasi:  
-👉 **[Buka Aplikasi Soal](https://github.com/USERNAME/REPO-NAME)**  
+👉 **[Login Guru](https://dian21guns.github.io/soaldian/login_guru.html)**  
 *(Ganti dengan link GitHub Anda)*
 
 ---
