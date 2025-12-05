@@ -1,122 +1,135 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upload Bank Soal</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #1e3c72; /* disamakan dengan warna login */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Bank Soal Guru</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #eef1f7;
+            margin: 0;
+            padding: 0;
+        }
 
-    .header {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      padding: 20px 40px;
-      color: white;
-      text-align: center;
-      font-size: 26px;
-      font-weight: bold;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-    .container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: rgba(255,255,255,0.12);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-      text-align: center;
-      backdrop-filter: blur(12px);
-      color: white;
-    }
+        h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
 
-    .upload-box {
-      border: 2px dashed #7df9ff;
-      padding: 40px;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-      color: white;
-    }
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
 
-    .upload-box:hover {
-      background: rgba(255,255,255,0.15);
-    }
+        .upload-box {
+            border: 2px dashed #4a90e2;
+            padding: 40px;
+            border-radius: 15px;
+            background: #f7fbff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
 
-    .upload-box img {
-      width: 80px;
-      opacity: 0.7;
-      margin-bottom: 10px;
-    }
+        .upload-box:hover {
+            background: #e8f3ff;
+            border-color: #1f78d1;
+        }
 
-    input[type="file"] {
-      display: none;
-    }
+        #excelUpload {
+            display: none;
+        }
 
-    .btn {
-      margin-top: 25px;
-      width: 100%;
-      padding: 12px;
-      background: #00c6ff;
-      color: #000;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
-    }
+        .btn {
+            margin-top: 20px;
+            background: #4a90e2;
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    .btn:hover {
-      background: #7df9ff;
-    }
+        .btn:hover {
+            background: #1f78d1;
+        }
 
-    pre {
-      margin-top: 20px;
-      padding: 20px;
-      background: #f7f9ff;
-      border-radius: 10px;
-      text-align: left;
-      max-height: 300px;
-      overflow-y: auto;
-      border: 1px solid #ddd;
-    }
-  </style>
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="header">
-  <img src="logo.png" alt="Logo Sekolah" style="width:80px; margin-bottom:10px;">
-  <div>Upload Bank Soal</div>
-</div>
+<div class="container">
+    <img src="logo.png" class="logo"> 
+    <h2>Upload Bank Soal (Excel)</h2>
 
-  <div class="container">
-    <label class="upload-box" for="excelInput">
-      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991130.png" />
-      <h3>Klik untuk Mengunggah File Excel</h3>
-      <p>Format wajib: .xlsx</p>
+    <label for="excelUpload">
+        <div class="upload-box" id="dropArea">
+            <strong>Click atau Drop file Excel di sini</strong><br><br>
+            <small>Format yang didukung: .xlsx / .xls</small>
+        </div>
     </label>
 
-    <input type="file" id="excelInput" accept=".xlsx">
+    <input type="file" id="excelUpload" accept=".xlsx,.xls">
+    <div class="file-name" id="fileName">Belum ada file yang dipilih</div>
 
-    <button class="btn" onclick="uploadExcel()">Konversi ke JSON</button>
+    <button class="btn" onclick="importExcel()">Import Excel</button>
+</div>
 
-    <pre id="output">Menunggu file...</pre>
-  </div>
-
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script>
-  function uploadExcel() {
-    const fileInput = document.getElementById("excelInput");
-    if (fileInput.files.length === 0) {
-      alert("Silakan pilih file Excel terlebih dahulu.");
-      return;
+    const excelInput = document.getElementById("excelUpload");
+    const fileNameText = document.getElementById("fileName");
+
+    excelInput.addEventListener("change", function() {
+        fileNameText.textContent = excelInput.files[0] ? excelInput.files[0].name : "Belum ada file yang dipilih";
+    });
+
+    function importExcel() {
+        const file = excelInput.files[0];
+        if (!file) {
+            alert("Silakan pilih file Excel terlebih dahulu.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: "array" });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+
+            const soalJSON = XLSX.utils.sheet_to_json(sheet, {
+                header: ["no", "soal", "pilihan_a", "pilihan_b", "pilihan_c", "pilihan_d", "kunci"],
+                range: 1
+            });
+
+            localStorage.setItem("bank_soal", JSON.stringify(soalJSON));
+
+            alert("Import Excel berhasil!");
+        };
+
+        reader.readAsArrayBuffer(file);
     }
-    document.getElementById("output").textContent = "Sedang memproses...";
-  }
 </script>
 
 </body>
